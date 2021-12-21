@@ -1,0 +1,1 @@
+nohup java -jar -Dio.netty.eventLoopThreads=2 moco-runner-1.2.0-standalone.jar http -p 8899 -c esbMoco.json 2>&1 > nohup.out

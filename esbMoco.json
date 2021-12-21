@@ -1,0 +1,49 @@
+[
+  {
+    "description" : "json报文挡板",
+    "request" : {
+      "uri" : "/json",
+      "method" : "post"
+    },
+    "response" : {
+		"status" : 200,
+		"latency" : {
+			"duration" : 1,
+			"unit" : "second"
+        },
+		"file" : {
+			"name" : {
+				"template" : "./response/${req.json.name}.json"
+			}
+		}
+    }
+  },
+  {
+    "description": "xml报文挡板",
+    "request": {
+      "uri": "/xml",
+      "method": "post",
+	  "xpaths" : {
+		  "/root/tranCode/text()" : "E12345678"
+	  }
+    },
+    "response": {
+		"status": 200,
+		"latency": 20,
+		"file": "./response/E12345678.xml"
+    }
+  },
+  {
+    "description": "上送什么就返回什么",
+    "request": {
+      "uri": "/content",
+      "method": "post"
+    },
+    "response": {
+		"status": 200,
+		"text": {
+			"template": "${req.content}"
+		}
+    }
+  }
+]
