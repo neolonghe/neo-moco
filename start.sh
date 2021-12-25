@@ -1,15 +1,16 @@
+
 #!/bin/bash
-#鍚姩閰嶇疆鏂囦欢鍚嶅瓧
+#启动配置文件名字
 CONF_FILE="esbMoco.json"
 
-#鍒ゆ柇鏄惁閲嶅鍚姩
+#判断是否重复启动
 PIDS=`ps -ef | grep java | grep $CONF_FILE |awk '{print $2}'`
 if [ -n "$PIDS" ]; then
     echo "ERROR: The moco with $CONF_FILE alaredy started!"
     exit 1
 fi
 
-#鏌ョ湅鏄惁鏈塲ava鐜
+#查看是否有java环境
 java -version
 
 JAVA_VM="-Xms128m -Xmx128m -Xmn64m -Xss256k -XX:MetaspaceSize=128m -XX:MaxMetaspaceSize=128m -XX:SurvivorRatio=6 -XX:+UseConcMarkSweepGC"

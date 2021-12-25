@@ -1,3 +1,4 @@
+
 @echo off
 echo Start Moco...
 java -version
